@@ -9,43 +9,39 @@ on:
 jobs:
   test:
     name: ${{ matrix.image }} python ${{ matrix.python_version }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         image:
           - centos:8
           - centos:7
-          - fedora:35
-          - fedora:34
-          - fedora:33
-          - fedora:32
-          - fedora:31
-          - fedora:30
+          - fedora:39
+          - fedora:38
+          - ubuntu:22.04
           - ubuntu:20.04
           - ubuntu:18.04
-          - ubuntu:16.04
-          - debian:10
-          - debian:9
+          - debian:12
+          - debian:11
           - oraclelinux:8
           - oraclelinux:7
           - amazonlinux:2
           - archlinux:latest
         python_version:
-          - 3.8.5
-          - 3.7.6
-          - 3.6.10
-        exclude:
-          - {image: "ansible-fedora:32", python_version: "3.6.10"}
+          - 3.12.2
+          - 3.11.9
+          - 3.10.14
+          - 3.9.19
+          - 3.8.19
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: 3.12
 
       - name: Install Molecule
         run: |

@@ -2,8 +2,8 @@
 # defaults file for ansible-role-python
 
 # The version of Python to install
-# Valid values: 3.4, 3.5, 3.6, 3.7, 3.8
-python_version: 3.7.6
+# Valid values: 3.8.19, 3.9.19, 3.10.14, 3.11.9, 3.12.2
+python_version: 3.9.19
 
 # The location where to download the Python archive
 python_tarball_url: https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tgz
@@ -16,7 +16,7 @@ ensure_pip: install
 enable_optimizations: true
 
 # Define the root directory for the Python install location,
-python_path: "/usr/local/python{{ python_version[:3] }}"
+python_path: "/usr/local/python{{ python_version | regex_replace('(\\d+\\.\\d+).*', '\\1') }}"
 
 # Allow N jobs at once
 # Default use number of vcpu

@@ -20,24 +20,18 @@ Supported platforms:
     - 7
 - name: Fedora
   versions:
-    - 32
-    - 31
-    - 30
-    - 29
-    - 28
-    - 27
-    - 26
+    - 39
+    - 38
 - name: Debian
   versions:
+    - bookworm
+    - bullseye
     - buster
-    - stretch
-    - jessie
 - name: Ubuntu
   versions:
-    - disco
+    - jammy
+    - focal
     - bionic
-    - xenial
-    - trusty
 - name: OracleLinux
   versions:
     - 8
@@ -50,6 +44,8 @@ Supported platforms:
     - any
 ```
 
+Probably supports older versions of the above distros too, but this is no longer tested against.
+
 ## Role Variables
 
 This role has multiple variables. The defaults for all these variables are the following:
@@ -59,8 +55,8 @@ This role has multiple variables. The defaults for all these variables are the f
 # defaults file for ansible-role-python
 
 # The version of Python to install
-# Valid values: 3.4, 3.5, 3.6, 3.7, 3.8
-python_version: 3.7.6
+# Valid values: 3.8.19, 3.9.19, 3.10.14, 3.11.9, 3.12.2
+python_version: 3.9.19
 
 # The location where to download the Python archive
 python_tarball_url: https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tgz
@@ -95,10 +91,10 @@ This role can also install a specific version of Python.
   roles:
     - role: diodonfrost.python
       vars:
-        python_version: 3.7.6
+        python_version: 3.9.19
 ```
 
-Install Python 3.7.6 and Python 3.6.10
+Install Python 3.9.19 and Python 3.8.19
 
 ```yaml
 ---
@@ -107,10 +103,10 @@ Install Python 3.7.6 and Python 3.6.10
   roles:
     - role: diodonfrost.python
       vars:
-        python_version: 3.7.6
+        python_version: 3.9.19
     - role: diodonfrost.python
       vars:
-        python_version: 3.6.10
+        python_version: 3.8.19
 ```
 
 ## Local Testing

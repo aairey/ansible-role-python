@@ -15,7 +15,7 @@ platforms:
     privileged: yes
     pre_build_image: yes
     env:
-      python_version: "${python_version:-3.8.5}"
+      python_version: "${python_version:-3.8.19}"
 provisioner:
   name: ansible
 verifier:
